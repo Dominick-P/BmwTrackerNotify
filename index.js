@@ -15,7 +15,7 @@ async function sleep(ms) {
 }
 
 const checkForStatusUpdate = (async () => {
-    const browser = await puppeteer.launch({ headless: 'new' }, { args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const browser = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
 
     let lastStatus = fs.readFileSync('lastStatus', 'utf8');
@@ -24,7 +24,7 @@ const checkForStatusUpdate = (async () => {
 
     await page.goto('https://mygarage.bmwusa.com/');
     await page.waitForNavigation();
-    
+
     await page.waitForSelector("#email");
     await page.type("#email", email);
     await page.type("#password", password);
