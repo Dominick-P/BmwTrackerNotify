@@ -54,8 +54,9 @@ const checkForStatusUpdate = (async () => {
 
     await page.evaluate(async () => {
         let imageFrame = document.querySelector("#carousel");
+        let pageLoading = document.querySelector(".page-loading");
 
-        while (imageFrame.clientHeight === 0) {
+        while (imageFrame.clientHeight === 0 && pageLoading.offsetParent !== null) {
             await new Promise(resolve => setTimeout(resolve, 1000));
         }
 
