@@ -51,20 +51,19 @@ const checkForStatusUpdate = (async () => {
     await sleep(1000);
     await page.click("a[name='trackStatus']");
     await sleep(1000);
-    await page.waitForSelector(".page-loading");
-    await page.waitForSelector("#carousel");
+    await page.waitForNetworkIdle();
+    await page.waitForSelector(".carousel-inner > div > img");
 
     await page.evaluate(async () => {
-        let imageFrame = document.querySelector("#carousel");
-        let pageLoading = document.querySelector(".page-loading");
+        let image = document.querySelector(".carousel-inner > div > img");
 
-        while (imageFrame.clientHeight === 0 && pageLoading.offsetParent !== null) {
+        while (!image.complete) {
             await new Promise(resolve => setTimeout(resolve, 1000));
         }
 
-        imageFrame.scrollIntoView();
+        image.scrollIntoView();
         await new Promise(resolve => setTimeout(resolve, 100));
-        imageFrame.scrollIntoView();
+        image.scrollIntoView();
 
         return;
     });
