@@ -48,9 +48,10 @@ const checkForStatusUpdate = (async () => {
 
     // Wait for page to finish loading with image, take screenshot, and send to telegram
 
-    await sleep(300);
+    await sleep(1000);
     await page.click("a[name='trackStatus']");
-    await page.waitForSelector("#carousel");
+    await page.waitForSelector(".page-loading");
+    await page.waitForSelector("#carosel");
 
     await page.evaluate(async () => {
         let imageFrame = document.querySelector("#carousel");
