@@ -1,6 +1,7 @@
 FROM node:19-bullseye
 
 # Install Chromium and required dependencies
+RUN apt-get update
 RUN apt-get install -y chromium
 
 # Set environment variables
