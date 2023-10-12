@@ -4,8 +4,8 @@ const TelegramBot = require('node-telegram-bot-api');
 const schedule = require('node-schedule');
 const fs = require('node:fs');
 
-const email = process.env.EMAIL;
-const password = process.env.PASSWORD;
+const email = process.env.email;
+const password = process.env.password;
 const telegramChatId = process.env.telegramChatId;
 
 const bot = new TelegramBot(process.env.telegramToken, { polling: false });
