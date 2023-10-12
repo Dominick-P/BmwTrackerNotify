@@ -44,9 +44,7 @@ const checkForStatusUpdate = (async () => {
         browser.close();
 
         return;
-    } else {
-        fs.writeFileSync('lastStatus', vehicleInfo.overHeadMessage); // It changed so let's update the last status file
-    }
+    };
 
     // Wait for page to finish loading with image, take screenshot, and send to telegram
 
@@ -72,6 +70,8 @@ const checkForStatusUpdate = (async () => {
 
     await bot.sendPhoto(telegramChatId, pageScreenshot, { caption: `Status - ${vehicleInfo.overHeadMessage}\nProduction Date - ${vehicleInfo.prodDate}` });
     console.log("Bot has sent message.");
+
+    fs.writeFileSync('lastStatus', vehicleInfo.overHeadMessage); // Update the status after successful notification
 
     await browser.close();
 });
