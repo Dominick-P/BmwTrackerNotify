@@ -51,7 +51,6 @@ const checkForStatusUpdate = (async () => {
     await sleep(1000);
     await page.click("a[name='trackStatus']");
     await sleep(1000);
-    await page.waitForNetworkIdle();
     await page.waitForSelector(".carousel-inner > div > img");
 
     await page.evaluate(async () => {
