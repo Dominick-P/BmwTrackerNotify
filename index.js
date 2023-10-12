@@ -15,7 +15,7 @@ async function sleep(ms) {
 }
 
 const checkForStatusUpdate = (async () => {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: 'new' });
     const page = await browser.newPage();
 
     let lastStatus = fs.readFileSync('lastStatus', 'utf8');
