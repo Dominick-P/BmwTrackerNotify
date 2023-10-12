@@ -50,6 +50,7 @@ const checkForStatusUpdate = (async () => {
 
     await sleep(1000);
     await page.click("a[name='trackStatus']");
+    await sleep(1000);
     await page.waitForSelector(".page-loading");
     await page.waitForSelector("#carousel");
 
